@@ -1,0 +1,35 @@
+{
+  "name": "Country",
+  "fields": [
+    {
+      "fieldName": "countryName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "countryCode",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required", "unique"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "location",
+      "otherEntityRelationshipName": "country",
+      "relationshipName": "location"
+    }
+  ],
+  "changelogDate": "20201005103510",
+  "entityTableName": "country",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "api",
+  "applications": "*",
+  "microserviceName": "api"
+}
