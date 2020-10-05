@@ -1,0 +1,16 @@
+version: '2'
+services:
+  api-mongodb:
+    image: mongo:4.2.7
+    ports:
+      - '27017:27017'
+    command: mongos --configdb csvr/api-mongodb-config --bind_ip 0.0.0.0
+  api-mongodb-node:
+    build:
+      context: .
+      dockerfile: mongodb/MongoDB.Dockerfile
+    command: mongod --shardsvr --replSet rs1
+  api-mongodb-config:
+    image: mongo:4.2.7
+    container_name: api-mongodb-config
+    command: mongod --configsvr --dbpath /data/db --replSet csvr
